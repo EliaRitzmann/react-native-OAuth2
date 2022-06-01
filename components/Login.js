@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as WebBrosser from 'expo-web-browser';
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session';
 import { Text, Pressable, StyleSheet } from 'react-native';
-import { getClientID } from '../api/getApiKey.js';
-import { setStatusBarNetworkActivityIndicatorVisible } from 'expo-status-bar';
+import { getClientID } from '../api/getApiKey';
 
 WebBrosser.maybeCompleteAuthSession();
 
@@ -17,7 +16,7 @@ export const Login = (props) => {
     const [request, response, promptAsync] = useAuthRequest(
         {
             responseType: ResponseType.Token,
-            clientId: "fa0bd564791744e99627c65e0a3d7d2f",
+            clientId: getClientID(),
             scopes: ['user-read-email'],
             usePKCE: false,
             redirectUri: makeRedirectUri({
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         backgroundColor: 'black',
     },
-    
+
     text: {
         fontSize: 16,
         lineHeight: 21,
