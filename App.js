@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text } from 'react-native';
 import { Login } from './components/Login';
+import { Logout } from './components/Logout';
 import { useState } from 'react';
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {token ? <Text>Welcome!</Text> : <Login setToken={setToken} />}  
+        {token ? <Logout setToken={setToken} /> : <Login setToken={setToken} />}  
     </View>
   );
 }
