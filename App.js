@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { Login } from './components/Login';
+import { useState } from 'react';
 
 export default function App() {
+
+  // accessToken wird hier als state durch der Login-Component gespeichert in den props
+  const [token, setToken] = useState();
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+      {token ? <Text>Welcome!</Text> : <Login setToken={setToken} />}  
     </View>
   );
 }
