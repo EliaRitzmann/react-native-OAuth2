@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function App() {
 
-  // accessToken wird hier als state durch der Login-Component gespeichert in den props
+  // accessToken wird hier durch Login gesettet
   const [token, setToken] = useState();
 
   return (
