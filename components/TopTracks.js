@@ -5,6 +5,7 @@ import { StyleSheet, View, Text } from 'react-native';
 export const TopTracks = (props) => {
 
     const [json, setJson] = useState();
+    const tracks = []
 
     async function getData() {
         await fetch('https://api.spotify.com/v1/me/top/tracks?limit=5', {
@@ -22,14 +23,19 @@ export const TopTracks = (props) => {
     useEffect(() => {
       getData()
     }, [])
-    
 
     console.log(json)
+    if (json != null) {
+        json.items.forEach(item => {
+            tracks.push(item.artists[0].name +" - ")
+            tracks.push(item.name +"\n")
+        })
+    }
 
     return (
         <View>
             <Text>
-                Top Tracks
+                {tracks}
             </Text>
         </View>
     )
