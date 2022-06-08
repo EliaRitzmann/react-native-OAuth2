@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as WebBrosser from 'expo-web-browser';
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session';
-import { Text, Pressable, StyleSheet } from 'react-native';
-import { getClientID } from '../api/getApiKey';
+import { Text, Pressable, StyleSheet, Platform } from 'react-native';
+import { getClientID } from '../api/spotify';
 
 WebBrosser.maybeCompleteAuthSession();
 
@@ -11,16 +11,26 @@ const discovery = {
     tokenEndpoint: 'https://accounts.spotify.com/api/token',
 };
 
+const path = () => {
+    switch(Platform.OS) {
+        case "ios":
+            return ""
+        case "web":
+            return "/"
+    }
+}
+
 export const Login = (props) => {
 
     const [request, response, promptAsync] = useAuthRequest(
         {
             responseType: ResponseType.Token,
             clientId: getClientID(),
-            scopes: ['user-read-email'],
+            scopes: ['user-read-email', 'user-top-read'],
             usePKCE: false,
             redirectUri: makeRedirectUri({
-                native: 'react-native-OAuth2://10.11.1.165:19000/'
+                scheme: 'react-native-oauth2',
+                path: path()
             }),
         },
         discovery
