@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as WebBrosser from 'expo-web-browser';
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session';
 import { Text, Pressable, StyleSheet, Platform } from 'react-native';
-import { getClientID } from '../api/spotify';
+import { getClientID } from '../api/getApiKeys';
 
 WebBrosser.maybeCompleteAuthSession();
 
