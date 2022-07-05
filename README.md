@@ -1,2 +1,5 @@
 # react-native-OAuth2
-A easy implementation of OAuth2 in React native
+
+[**Portfolio (German)**](https://portfolio.bbbaden.ch/view/view.php?t=NhvzjnxAEcbOsYam6I97)
+
+[**Demo**](https://expo.dev/@elia_jerome/react-native-OAuth2)
